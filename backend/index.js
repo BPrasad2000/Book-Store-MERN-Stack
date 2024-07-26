@@ -6,7 +6,13 @@ import booksRoute from"./routes/booksRoute.js";
 const app =express();
 
 app.use(express.json());
-
+app.use(
+    cros({
+        origin:"http://localhost:3000",
+        methods:['GET','POST','PUT','DELETE'],
+        allowedHeaders:['Content-Type'],
+    })
+)
 app.get('/',(req,res)=>{
     console.log(req)
     return res.status(234).send('welcome to MERN Stack Tutorial')
